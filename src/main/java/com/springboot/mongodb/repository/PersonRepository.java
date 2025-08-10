@@ -14,7 +14,10 @@ public interface PersonRepository extends MongoRepository<Person, String> {
 
     void deleteById(String id);
 
-    @Query(value = "{'age' : { $gt : ?0, $lt: ?1}}")
+    @Query(value = "{'age' : { $gt : ?0, $lt: ?1}}",
+           fields = "{addresses: 0}")                                                                                                                 //to filter address forom person data
     List<Person> findPersonByAgeIsBetween(int min,int maxAge);
+
+
 
 }
